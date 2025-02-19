@@ -1,0 +1,6 @@
+Sorted array: 1 5 7 8 9 10 
+
+
+To run the code:
+g++ quicksort.cpp -o quicksort
+./quicksort

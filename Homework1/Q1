@@ -1,0 +1,816 @@
+Script started on 2025-02-06 00:08:52+00:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="150" LINES="39"]
+[0;32m@Artyom2222 [0m➜ [1;34m/workspaces/csci-330-homeworks-Artyom2222/Homework1 [0;36m([1;31mmain[0;36m) [0m$ sbcl
+This is SBCL 2.0.1.debian, an implementation of ANSI Common Lisp.
+More information about SBCL is available at <http://www.sbcl.org/>.
+
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+* (defun speak (x y) (list ’all ’x ’is ’y))
+; in: DEFUN SPEAK
+;     (SB-INT:NAMED-LAMBDA SPEAK
+;         (X Y)
+;       (BLOCK SPEAK (LIST ’ALL ’X ’IS ’Y)))
+; 
+; caught STYLE-WARNING:
+;   The variable X is defined but never used.
+; 
+; caught STYLE-WARNING:
+;   The variable Y is defined but never used.
+; in: DEFUN SPEAK
+;     (LIST ’ALL ’X ’IS ’Y)
+; 
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::’ALL
+; 
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::’IS
+; 
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::’X
+; 
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::’Y
+; 
+; compilation unit finished
+;   Undefined variables:
+;     ’ALL ’IS ’X ’Y
+;   caught 4 WARNING conditions
+;   caught 2 STYLE-WARNING conditions
+SPEAK
+* (defun speak (x) (y) (list ’all x ’is y))
+; in: DEFUN SPEAK
+;     (LIST ’ALL X ’IS Y)
+; 
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::Y
+
+;     (Y)
+; 
+; caught STYLE-WARNING:
+;   undefined function: COMMON-LISP-USER::Y
+
+;     (LIST ’ALL X ’IS Y)
+; 
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::’ALL
+; 
+; caught WARNING:
+;   undefined variable: COMMON-LISP-USER::’IS
+; 
+; compilation unit finished
+;   Undefined function:
+;     Y
+;   Undefined variables:
+;     Y ’ALL ’IS
+;   caught 3 WARNING conditions
+;   caught 1 STYLE-WARNING condition
+WARNING: redefining COMMON-LISP-USER::SPEAK in DEFUN
+SPEAK
+* (defun speak ((x) (y)) (list all ’x is ’y))
+; in: DEFUN SPEAK
+;     (SB-INT:NAMED-LAMBDA SPEAK
+;         ((X) (Y))
+;       (BLOCK SPEAK (LIST ALL ’X IS ’Y)))
+; 
+; caught ERROR:
+;   Required argument is not a symbol: (X)
+
+debugger invoked on a SB-INT:SIMPLE-PROGRAM-ERROR in thread
+#<THREAD "main thread" RUNNING {1000560083}>:
+  Required argument is not a symbol: (X)
+
+Type HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.
+
+restarts (invokable by number or by possibly-abbreviated name):
+  0: [ABORT] Exit debugger, returning to top level.
+
+((FLET "LAMBDA0" :IN "SYS:SRC;COMPILER;TARGET-MAIN.LISP"))
+0] (list 'cons t nil)
+
+(CONS T NIL)
+0] (eval (list 'cons t nil))
+
+(T)
+0] (eval (eval (list 'cons t nil)))
+
+
+debugger invoked on a UNDEFINED-FUNCTION in thread
+#<THREAD "main thread" RUNNING {1000560083}>:
+  The function COMMON-LISP:T is undefined.
+
+Type HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.
+
+restarts (invokable by number or by possibly-abbreviated name):
+  0: [CONTINUE      ] Retry calling T.
+  1: [USE-VALUE     ] Call specified function.
+  2: [RETURN-VALUE  ] Return specified values.
+  3: [RETURN-NOTHING] Return zero values.
+  4: [ABORT         ] Reduce debugger level (to debug level 1).
+  5:                  Exit debugger, returning to top level.
+
+("undefined function")
+0[2] (apply #'cons '(t nil))
+; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.
+(T)
+0[2] (eval nil) 
+; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.
+NIL
+0[2] (list 'eval nil)
+; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.
+(EVAL NIL)
+0[2] (eval (list 'eval nil))
+; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.
+NIL
+0[2] (exit)
+; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.
+; 
+; compilation unit aborted
+;   caught 1 fatal ERROR condition
+;   caught 1 ERROR condition
+[0;32m@Artyom2222 [0m➜ [1;34m/workspaces/csci-330-homeworks-Artyom2222/Homework1 [0;36m([1;31mmain[0;36m) [0m$ nano Q1
+[?2004h[?1049h[22;0;0t[1;39r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[37;69H(B[0;7m[ Reading... ](B[m[37;67H(B[0;7m[ Read 259 lines ](B[m[H(B[0;7m  GNU nano 4.8                                                              Q1                                                                        [1;149H(B[m[38d(B[0;7m^G(B[m Get Help     (B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut Text     (B[0;7m^J(B[m Justify[81G(B[0;7m^C(B[m Cur Pos[97G(B[0;7mM-U(B[m Undo[38;113H(B[0;7mM-A(B[m Mark Text   (B[0;7mM-](B[m To Bracket[39d(B[0;7m^X(B[m Exit[39;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste Text   (B[0;7m^T(B[m To Spell     (B[0;7m^_(B[m Go To Line   (B[0;7mM-E(B[m Redo[39;113H(B[0;7mM-6(B[m Copy Text   (B[0;7m^Q(B[m Where Was[37d[2d[39;49m(B[mScript started on 2025-02-06 00:08:52+00:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="150" LINES="39"][3d^[[0;32m@Artyom2222 ^[[0m➜ ^[[1;34m/workspaces/csci-330-homeworks-Artyom2222/Homework1 ^[[0;36m(^[[1;31mmain^[[0;36m) ^[[0m$ sbcl[4dThis is SBCL 2.0.1.debian, an implementation of ANSI Common Lisp.[5dMore information about SBCL is available at <http://www.sbcl.org/>.[7dSBCL is free software, provided as is, with absolutely no warranty.[8dIt is mostly in the public domain; some portions are provided under[9dBSD-style licenses.  See the CREDITS and COPYING files in the[10ddistribution for more information.[11d* (defun speak (x y) (list ’all ’x ’is ’y))[12d; in: DEFUN SPEAK[13d;     (SB-INT:NAMED-LAMBDA SPEAK[14d;[14;11H(X Y)[15d;[9G(BLOCK SPEAK (LIST ’ALL ’X ’IS ’Y)))[16d;[17d; caught STYLE-WARNING:[18d;   The variable X is defined but never used.[19d;[20d; caught STYLE-WARNING:[21d;   The variable Y is defined but never used.[22d; in: DEFUN SPEAK[23d;     (LIST ’ALL ’X ’IS ’Y)[24d;[25d; caught WARNING:[26d;   undefined variable: COMMON-LISP-USER::’ALL[27d;[28d; caught WARNING:[29d;   undefined variable: COMMON-LISP-USER::’IS[30d;[31d; caught WARNING:[32d;   undefined variable: COMMON-LISP-USER::’X[33d;[34d; caught WARNING:[35d;   undefined variable: COMMON-LISP-USER::’Y[36d;[2d[?12l[?25h[?25l[3d[?12l[?25h[?25l[4d[?12l[?25h[?25l[5d[?12l[?25h[?25l[6d[?12l[?25h[?25l[7d[?12l[?25h[?25l[8d[?12l[?25h[?25l[9d[?12l[?25h[?25l[10d[?12l[?25h[?25l[11d[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[37d[K[2d[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[3d[?12l[?25h[?25l[4d[?12l[?25h[?25l[5d[?12l[?25h[?25l[6d[?12l[?25h[?25l[7d[?12l[?25h[?25l[8d[?12l[?25h[?25l[9d[?12l[?25h[?25l[10d[?12l[?25h[?25l[11d[?12l[?25h[?25l[12d[?12l[?25h[?25l[13d[?12l[?25h[?25l[14d[?12l[?25h[?25l[15d[?12l[?25h[?25l[16d[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[20d[?12l[?25h[?25l[21d[?12l[?25h[?25l[22d[?12l[?25h[?25l[23d[?12l[?25h[?25l[24d[?12l[?25h[?25l[25d[?12l[?25h[?25l[26d[?12l[?25h[?25l[27d[?12l[?25h[?25l[28d[?12l[?25h[?25l[29d[?12l[?25h[?25l[30d[?12l[?25h[?25l[31d[?12l[?25h[?25l[32d[?12l[?25h[?25l[33d[?12l[?25h[?25l[34d[?12l[?25h[?25l[35d[?12l[?25h[?25l[36d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; compilation unit finished[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   Undefined variables:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     ’ALL ’IS ’X ’Y[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   caught 4 WARNING conditions[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   caught 2 STYLE-WARNING conditions[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HSPEAK[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H* (defun speak (x) (y) (list ’all x ’is y))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; in: DEFUN SPEAK[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     (LIST ’ALL X ’IS Y)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   undefined variable: COMMON-LISP-USER::Y[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     (Y)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught STYLE-WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   undefined function: COMMON-LISP-USER::Y[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     (LIST ’ALL X ’IS Y)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   undefined variable: COMMON-LISP-USER::’ALL[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   undefined variable: COMMON-LISP-USER::’IS[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; compilation unit finished[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   Undefined function:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     Y[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   Undefined variables:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     Y ’ALL ’IS[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   caught 3 WARNING conditions[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   caught 1 STYLE-WARNING condition[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HWARNING: redefining COMMON-LISP-USER::SPEAK in DEFUN[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HSPEAK[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H* (defun speak ((x) (y)) (list all ’x is ’y))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; in: DEFUN SPEAK[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     (SB-INT:NAMED-LAMBDA SPEAK[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[36;11H((X) (Y))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[9G(BLOCK SPEAK (LIST ALL ’X IS ’Y)))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught ERROR:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   Required argument is not a symbol: (X)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1Hdebugger invoked on a SB-INT:SIMPLE-PROGRAM-ERROR in thread[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[36m#<THREAD "main thread" RUNNING {1000560083}>:[39m(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3HRequired argument is not a symbol: (X)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HType HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1Hrestarts (invokable by number or by possibly-abbreviated name):[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H0: [ABORT] Exit debugger, returning to top level.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H((FLET "LAMBDA0" :IN "SYS:SRC;COMPILER;TARGET-MAIN.LISP"))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0] (list 'cons t nil)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H(CONS T NIL)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0] (eval (list 'cons t nil))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H(T)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0] (eval (eval (list 'cons t nil)))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1Hdebugger invoked on a UNDEFINED-FUNCTION in thread[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[36m#<THREAD "main thread" RUNNING {1000560083}>:[39m(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3HThe function COMMON-LISP:T is undefined.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HType HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1Hrestarts (invokable by number or by possibly-abbreviated name):[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H0: [CONTINUE[21G] Retry calling T.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H1: [USE-VALUE     ] Call specified function.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H2: [RETURN-VALUE  ] Return specified values.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H3: [RETURN-NOTHING] Return zero values.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H4: [ABORT[36;21H] Reduce debugger level (to debug level 1).[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H5:[36;23HExit debugger, returning to top level.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H("undefined function")[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0[2] (apply #'cons '(t nil))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H(T)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0[2] (eval nil)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HNIL[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0[2] (list 'eval nil)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H(EVAL NIL)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0[2] (eval (list 'eval nil))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HNIL[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0[2] (exit)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; compilation unit aborted[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   caught 1 fatal ERROR condition[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^(B[0;7m>[36;1H(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H0: [REPLACE-FUNCTION] Call a different function with the same arguments[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H1: [CALL-FORM[23G] Call a different form[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H2: [ABORT[36;23H] Reduce debugger level (to debug level 1).[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H3:[36;25HExit debugger, returning to top level.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H(MYSTERY DANCING BEAR) [external][?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;4Hsource: (DEFUN MYSTERY (X) (LIST (SECOND X) (FIRST X)))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0[2] (mystery 'dancing 'bear)^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H(B[0;7m>[36;1H(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H(NIL ZOWIE)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0[2] (mystery (list 'first 'second))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H(SECOND FIRST)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0[2] (exit)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[0;32m@Artyom2222 ^[[0m➜ ^[[1;34m/workspaces/csci-330-homeworks-Artyom2222/Homework1 ^[[0;36m(^[[1;31mmain^[[0;36m) ^[[0m$ script q1^H^[[K^H^[[KQ1[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HScript started, file is Q1[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[0;32m@Artyom2222 ^[[0m➜ ^[[1;34m/workspaces/csci-330-homeworks-Artyom2222/Homework1 ^[[0;36m(^[[1;31mmain^[[0;36m) ^[[0m$ sbcl[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HThis is SBCL 2.0.1.debian, an implementation of ANSI Common Lisp.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HMore information about SBCL is available at <http://www.sbcl.org/>.[?12l[?25h[?25l7[2;37r8[37d[2S[1;39r[36;1HSBCL is free software, provided as is, with absolutely no warranty.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HIt is mostly in the public domain; some portions are provided under[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HBSD-style licenses.  See the CREDITS and COPYING files in the[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1Hdistribution for more information.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H* (defun speak (x y) (list ’all ’x ’is ’y))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; in: DEFUN SPEAK[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     (SB-INT:NAMED-LAMBDA SPEAK[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[36;11H(X Y)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[9G(BLOCK SPEAK (LIST ’ALL ’X ’IS ’Y)))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught STYLE-WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   The variable X is defined but never used.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught STYLE-WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   The variable Y is defined but never used.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; in: DEFUN SPEAK[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     (LIST ’ALL ’X ’IS ’Y)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   undefined variable: COMMON-LISP-USER::’ALL[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   undefined variable: COMMON-LISP-USER::’IS[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   undefined variable: COMMON-LISP-USER::’X[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   undefined variable: COMMON-LISP-USER::’Y[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; compilation unit finished[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   Undefined variables:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     ’ALL ’IS ’X ’Y[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   caught 4 WARNING conditions[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   caught 2 STYLE-WARNING conditions[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HSPEAK[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H* (defun speak (x) (y) (list ’all x ’is y))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; in: DEFUN SPEAK[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     (LIST ’ALL X ’IS Y)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   undefined variable: COMMON-LISP-USER::Y[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     (Y)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught STYLE-WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   undefined function: COMMON-LISP-USER::Y[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     (LIST ’ALL X ’IS Y)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   undefined variable: COMMON-LISP-USER::’ALL[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   undefined variable: COMMON-LISP-USER::’IS[?12l[?25h[?25l7[2;37r8[37d[2S[1;39r[35;1H;[36d; compilation unit finished[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   Undefined function:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     Y[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   Undefined variables:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     Y ’ALL ’IS[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   caught 3 WARNING conditions[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   caught 1 STYLE-WARNING condition[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HWARNING: redefining COMMON-LISP-USER::SPEAK in DEFUN[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HSPEAK[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H* (defun speak ((x) (y)) (list all ’x is ’y))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; in: DEFUN SPEAK[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     (SB-INT:NAMED-LAMBDA SPEAK[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[36;11H((X) (Y))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[9G(BLOCK SPEAK (LIST ALL ’X IS ’Y)))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught ERROR:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   Required argument is not a symbol: (X)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1Hdebugger invoked on a SB-INT:SIMPLE-PROGRAM-ERROR in thread[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[36m#<THREAD "main thread" RUNNING {1000560083}>:[39m(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3HRequired argument is not a symbol: (X)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HType HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1Hrestarts (invokable by number or by possibly-abbreviated name):[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H0: [ABORT] Exit debugger, returning to top level.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H((FLET "LAMBDA0" :IN "SYS:SRC;COMPILER;TARGET-MAIN.LISP"))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0] (list 'cons t nil)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H(CONS T NIL)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0] (eval (list 'cons t nil))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H(T)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0] (eval (eval (list 'cons t nil)))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1Hdebugger invoked on a UNDEFINED-FUNCTION in thread[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[36m#<THREAD "main thread" RUNNING {1000560083}>:[39m(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3HThe function COMMON-LISP:T is undefined.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d[2S[1;39r[35;1HType HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.[36d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1Hrestarts (invokable by number or by possibly-abbreviated name):[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H0: [CONTINUE[21G] Retry calling T.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H1: [USE-VALUE     ] Call specified function.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H2: [RETURN-VALUE  ] Return specified values.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H3: [RETURN-NOTHING] Return zero values.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H4: [ABORT[36;21H] Reduce debugger level (to debug level 1).[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H5:[36;23HExit debugger, returning to top level.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H("unde[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[13d[?12l[?25h[?25l[14d[?12l[?25h[?25l[15d[?12l[?25h[?25l[16d[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[14d[?12l[?25h[?25l[15d[?12l[?25h[?25l[16d[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[20d[?12l[?25h[?25l[21d[?12l[?25h[?25l[22d[?12l[?25h[?25l[23d[?12l[?25h[?25l[24d[?12l[?25h[?25l[25d[?12l[?25h[?25l[26d[?12l[?25h[?25l[27d[?12l[?25h[?25l[28d[?12l[?25h[?25l[29d[?12l[?25h[?25l[30d[?12l[?25h[?25l[31d[?12l[?25h[?25l[32d[?12l[?25h[?25l[33d[?12l[?25h[?25l[34d[?12l[?25h[?25l[35d[?12l[?25h[?25l[36d[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[A[?12l[?25h[?25l[36d[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[38d[J[39d[?12l[?25h[39;1H[?1049l[23;0;0t[?1l>[?2004l[0;32m@Artyom2222 [0m➜ [1;34m/workspaces/csci-330-homeworks-Artyom2222/Homework1 [0;36m([1;31mmain[0;36m) [0m$ y
+bash: y: command not found
+[0;32m@Artyom2222 [1;31m➜ [1;34m/workspaces/csci-330-homeworks-Artyom2222/Homework1 [0;36m([1;31mmain[0;36m) [0m$ Y
+bash: Y: command not found
+[0;32m@Artyom2222 [1;31m➜ [1;34m/workspaces/csci-330-homeworks-Artyom2222/Homework1 [0;36m([1;31mmain[0;36m) [0m$ nano q1[K[KQ1
+[?2004h[?1049h[22;0;0t[1;39r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[37;69H(B[0;7m[ Reading... ](B[m[37;67H(B[0;7m[ Read 427 lines ](B[m[H(B[0;7m  GNU nano 4.8                                                              Q1                                                                        [1;149H(B[m[38d(B[0;7m^G(B[m Get Help     (B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut Text     (B[0;7m^J(B[m Justify[81G(B[0;7m^C(B[m Cur Pos[97G(B[0;7mM-U(B[m Undo[38;113H(B[0;7mM-A(B[m Mark Text   (B[0;7mM-](B[m To Bracket[39d(B[0;7m^X(B[m Exit[39;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste Text   (B[0;7m^T(B[m To Spell     (B[0;7m^_(B[m Go To Line   (B[0;7mM-E(B[m Redo[39;113H(B[0;7mM-6(B[m Copy Text   (B[0;7m^Q(B[m Where Was[37d[2d[39;49m(B[mScript started on 2025-02-06 00:08:52+00:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="150" LINES="39"][3d^[[0;32m@Artyom2222 ^[[0m➜ ^[[1;34m/workspaces/csci-330-homeworks-Artyom2222/Homework1 ^[[0;36m(^[[1;31mmain^[[0;36m) ^[[0m$ sbcl[4dThis is SBCL 2.0.1.debian, an implementation of ANSI Common Lisp.[5dMore information about SBCL is available at <http://www.sbcl.org/>.[7dSBCL is free software, provided as is, with absolutely no warranty.[8dIt is mostly in the public domain; some portions are provided under[9dBSD-style licenses.  See the CREDITS and COPYING files in the[10ddistribution for more information.[11d* (defun speak (x y) (list ’all ’x ’is ’y))[12d; in: DEFUN SPEAK[13d;     (SB-INT:NAMED-LAMBDA SPEAK[14d;[14;11H(X Y)[15d;[9G(BLOCK SPEAK (LIST ’ALL ’X ’IS ’Y)))[16d;[17d; caught STYLE-WARNING:[18d;   The variable X is defined but never used.[19d;[20d; caught STYLE-WARNING:[21d;   The variable Y is defined but never used.[22d; in: DEFUN SPEAK[23d;     (LIST ’ALL ’X ’IS ’Y)[24d;[25d; caught WARNING:[26d;   undefined variable: COMMON-LISP-USER::’ALL[27d;[28d; caught WARNING:[29d;   undefined variable: COMMON-LISP-USER::’IS[30d;[31d; caught WARNING:[32d;   undefined variable: COMMON-LISP-USER::’X[33d;[34d; caught WARNING:[35d;   undefined variable: COMMON-LISP-USER::’Y[36d;[2d[?12l[?25h[?25l[3d[?12l[?25h[?25l[4d[?12l[?25h[?25l[5d[?12l[?25h[?25l[6d[?12l[?25h[?25l[7d[?12l[?25h[?25l[8d[?12l[?25h[?25l[9d[?12l[?25h[?25l[10d[?12l[?25h[?25l[11d[?12l[?25h[?25l[12d[?12l[?25h[?25l[13d[?12l[?25h[?25l[14d[?12l[?25h[?25l[15d[?12l[?25h[?25l[16d[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[20d[?12l[?25h[?25l[21d[?12l[?25h[?25l[22d[?12l[?25h[?25l[23d[?12l[?25h[?25l[24d[?12l[?25h[?25l[25d[?12l[?25h[?25l[26d[?12l[?25h[?25l[27d[?12l[?25h[?25l[37d[K[28d[?12l[?25h[?25l[29d[?12l[?25h[?25l[30d[?12l[?25h[?25l[31d[?12l[?25h[?25l[32d[?12l[?25h[?25l[33d[?12l[?25h[?25l[34d[?12l[?25h[?25l[35d[?12l[?25h[?25l[36d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; compilation unit finished[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   Undefined variables:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     ’ALL ’IS ’X ’Y[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   caught 4 WARNING conditions[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   caught 2 STYLE-WARNING conditions[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HSPEAK[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H* (defun speak (x) (y) (list ’all x ’is y))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; in: DEFUN SPEAK[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     (LIST ’ALL X ’IS Y)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   undefined variable: COMMON-LISP-USER::Y[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     (Y)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught STYLE-WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   undefined function: COMMON-LISP-USER::Y[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     (LIST ’ALL X ’IS Y)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   undefined variable: COMMON-LISP-USER::’ALL[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; caught WARNING:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   undefined variable: COMMON-LISP-USER::’IS[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; compilation unit finished[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   Undefined function:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     Y[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   Undefined variables:[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;     Y ’ALL ’IS[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[26d[?12l[?25h[?25l[A[?12l[?25h[?25l[26d[?12l[?25h[?25l[27d[?12l[?25h[?25l[28d[?12l[?25h[?25l[29d[?12l[?25h[?25l[30d[?12l[?25h[?25l[31d[?12l[?25h[?25l[32d[?12l[?25h[?25l[33d[?12l[?25h[?25l[34d[?12l[?25h[?25l[35d[?12l[?25h[?25l[36d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   caught 3 WARNING conditions[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   caught 1 STYLE-WARNING condition[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HWARNING: redefining COMMON-LISP-USER::SPEAK in DEFUN[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HSPEAK[?12l[?25h[?25l7[2;37r8[37d[3S[1;39r[34;1H* (defun speak ((x) (y)) (list all ’x is ’y))[35d; in: DEFUN SPEAK[36d;     (SB-INT:NAMED-LAMBDA SPEAK[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[36;11H((X) (Y))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[9G(BLOCK SPEAK (LIST ALL ’X IS ’Y)))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d[2S[1;39r[35;1H; caught ERROR:[36d;   Required argument is not a symbol: (X)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1Hdebugger invoked on a SB-INT:SIMPLE-PROGRAM-ERROR in thread[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[36m#<THREAD "main thread" RUNNING {1000560083}>:[39m(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3HRequired argument is not a symbol: (X)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HType HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1Hrestarts (invokable by number or by possibly-abbreviated name):[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H0: [ABORT] Exit debugger, returning to top level.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H((FLET "LAMBDA0" :IN "SYS:SRC;COMPILER;TARGET-MAIN.LISP"))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0] (list 'cons t nil)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H(CONS T NIL)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0] (eval (list 'cons t nil))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H(T)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0] (eval (eval (list 'cons t nil)))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1Hdebugger invoked on a UNDEFINED-FUNCTION in thread[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[36m#<THREAD "main thread" RUNNING {1000560083}>:[39m(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3HThe function COMMON-LISP:T is undefined.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HType HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1Hrestarts (invokable by number or by possibly-abbreviated name):[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H0: [CONTINUE[21G] Retry calling T.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H1: [USE-VALUE     ] Call specified function.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H2: [RETURN-VALUE  ] Return specified values.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H3: [RETURN-NOTHING] Return zero values.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H4: [ABORT[36;21H] Reduce debugger level (to debug level 1).[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;3H5:[36;23HExit debugger, returning to top level.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H("undefined function")[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0[2] (apply #'cons '(t nil))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H(T)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0[2] (eval nil)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HNIL[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0[2] (list 'eval nil)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H(EVAL NIL)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0[2] (eval (list 'eval nil))[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1HNIL[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H0[2] (exit)[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H; compilation unit aborted[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   caught 1 fatal ERROR condition[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H;   caught 1 ERROR condition[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[0;32m@Artyom2222 ^[[0m➜ ^[[1;34m/workspaces/csci-330-homeworks-Artyom2222/Homework1 ^[[0;36m(^[[1;31mmain^[[0;36m) ^[[0m$ nano Q1[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[?2004h^[[?1049h^[[22;0;0t^[[1;39r^[(B^[[m^[[4l^[[?7h^[[39;49m^[[?1h^[=^[[?1h^[=^[[?25l^[[39;49m^[(B^[[m^[[H^[[2J^[[37;69H^[(B^[[0;7m[ Reading... ](B[0;7m>[36;1H(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; compilation unit finished^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   Undefined variables:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     ’ALL ’IS ’X ’Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   caught 4 WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   caught 2 STYLE-WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HSPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H* (defun speak (x) (y) (list ’all x ’is y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (LIST ’ALL X ’IS Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught STYLE-WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined function: COMMON-LISP-USER::Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (LIST ’ALL X ’IS Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’ALL^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; compilation unit finished^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   Undefined function:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   Undefined variables:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     Y ’ALL ’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   caught 3 WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   caught 1 STYLE-WARNING condition^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HWARNING: redefining COMMON-LISP-USER::SPEAK in DEFUN^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HSPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H* (defun speak ((x) (y)) (list all ’x is ’y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (SB-INT:NAMED-LAMBDA SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^[[36;11H((X) (Y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^[[9G(BLOCK SPEAK (LIST ALL ’X IS ’Y)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught ERROR:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   Required argument is not a symbol: (X)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1Hdebugger invoked on a SB-INT:SIMPLE-PROGRAM-ERROR in thread^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d[2S[1;39r[35;1H^[[1;39r^[[36;1H^[[36m#<THREAD "main thread" RUNNING {1000560083}>:^M^[[39m^[(B^[[m^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[36d^[[1;39r^[[36;3HRequired argument is not a symbol: (X)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HType HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1Hrestarts (invokable by number or by possibly-abbreviated name):^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H0: [ABORT] Exit debugger, returning to top level.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H((FLET "LAMBDA0" :IN "SYS:SRC;COMPILER;TARGET-MAIN.LISP"))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0] (list 'cons t nil)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H(CONS T NIL)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0] (eval (list 'cons t nil))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H(T)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0] (eval (eval (list 'cons t nil)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1Hdebugger invoked on a UNDEFINED-FUNCTION in thread^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[36m#<THREAD "main thread" RUNNING {1000560083}>:^M^[[39m^[(B^[[m^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3HThe function COMMON-LISP:T is undefined.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HType HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1Hrestarts (invokable by number or by possibly-abbreviated name):^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H0: [CONTINUE^[[21G] Retry calling T.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H1: [USE-VALUE     ] Call specified function.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H2: [RETURN-VALUE  ] Return specified values.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H3: [RETURN-NOTHING] Return zero values.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H4: [ABORT^[[36;21H] Reduce debugger level (to debug level 1).^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H5:^[[36;23HExit debugger, returning to top level.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H("undefined function")^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0[2] (apply #'cons '(t nil))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H(T)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0[2] (eval nil)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HNIL^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0[2] (list 'eval nil)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H(EVAL NIL)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0[2] (eval (list 'eval nil))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HNIL^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0[2] (exit)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; compilation unit aborted^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   caught 1 fatal ERROR condition^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^(B[0;7m>[36;1H(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H0: [REPLACE-FUNCTION] Call a different function with the same arguments^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H1: [CALL-FORM^[[23G] Call a different form^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H2: [ABORT^[[36;23H] Reduce debugger level (to debug level 1).^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H3:^[[36;25HExit debugger, returning to top level.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H(MYSTERY DANCING BEAR) [external]^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;4Hsource: (DEFUN MYSTERY (X) (LIST (SECOND X) (FIRST X)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0[2] (mystery 'dancing 'bear)^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^(B[0;7m>[36;1H(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H(NIL ZOWIE)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0[2] (mystery (list 'first 'second))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H(SECOND FIRST)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0[2] (exit)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[0;32m@Artyom2222 ^[[0m➜ ^[[1;34m/workspaces/csci-330-homeworks-Artyom2222/Homework1 ^[[0;36m(^[[1;31mmain^[[0;36m) ^[[0m$ script q(B[0;7m>[36;1H(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HScript started, file is Q1^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[0;32m@Artyom2222 ^[[0m➜ ^[[1;34m/workspaces/csci-330-homeworks-Artyom2222/Homework1 ^[[0;36m(^[[1;31mmain^[[0;36m) ^[[0m$ sbcl^M^[(B[0;7m>[36;1H(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HThis is SBCL 2.0.1.debian, an implementation of ANSI Common Lisp.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HMore information about SBCL is available at <http://www.sbcl.org/>.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d^[[2S^[[1;39r^[[36;1HSB(B[0;7m>[36;1H(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HIt is mostly in the public domain; some portions are provided under^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HBSD-style licenses.  See the CREDITS and COPYING files in the^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1Hdistribution for more information.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H* (defun speak (x y) (list ’all ’x ’is ’y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (SB-INT:NAMED-LAMBDA SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^[[36;11H(X Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^[[9G(BLOCK SPEAK (LIST ’ALL ’X ’IS ’Y)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught STYLE-WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   The variable X is defined but never used.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught STYLE-WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   The variable Y is defined but never used.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (LIST ’ALL ’X ’IS ’Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’ALL^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’X^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; compilation unit finished^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   Undefined variables:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     ’ALL ’IS ’X ’Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   caught 4 WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   caught 2 STYLE-WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HSPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H* (defun speak (x) (y) (list ’all x ’is y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (LIST ’ALL X ’IS Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught STYLE-WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined function: COMMON-LISP-USER::Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (LIST ’ALL X ’IS Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’ALL^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d^[[2S^[[1;39r^[[35;1H;^[[36d^H; compilation u(B[0;7m>[36;1H(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   Undefined function:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   Undefined variables:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     Y ’ALL ’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   caught 3 WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   caught 1 STYLE-WARNING condition^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HWARNING: redefining COMMON-LISP-USER::SPEAK in DEFUN^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HSPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H* (defun speak ((x) (y)) (list all ’x is ’y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (SB-INT:NAMED-LAMBDA SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^[[36;11H((X) (Y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^[[9G(BLOCK SPEAK (LIST ALL ’X IS ’Y)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught ERROR:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   Required argument is not a symbol: (X)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1Hdebugger invoked on a SB-INT:SIMPLE-PROGRAM-ERROR in thread^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[36m#<THREAD "main thread" RUNNING {1000560083}>:^M^[[39m^[(B^[[m^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3HRequired argument is not a symbol: (X)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HType HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1Hrestarts (invokable by number or by possibly-abbreviated name):^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H0: [ABORT] Exit debugger, returning to top level.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H((FLET "LAMBDA0" :IN "SYS:SRC;COMPILER;TARGET-MAIN.LISP"))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0] (list 'cons t nil)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H(CONS T NIL)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d[2S[1;39r[35;1H^[[1;39r^[[36;1H0] (eval (list 'cons t nil))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[36d^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H(T)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0] (eval (eval (list 'cons t nil)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1Hdebugger invoked on a UNDEFINED-FUNCTION in thread^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[36m#<THREAD "main thread" RUNNING {1000560083}>:^M^[[39m^[(B^[[m^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3HThe function COMMON-LISP:T is undefined.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d^[[2S^[[1;39r^[[35;1HType HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.^M^[[36(B[0;7m>[36;1H(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1Hrestarts (invokable by number or by possibly-abbreviated name):^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H0: [CONTINUE^[[21G] Retry calling T.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H1: [USE-VALUE     ] Call specified function.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H2: [RETURN-VALUE  ] Return specified values.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H3: [RETURN-NOTHING] Return zero values.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H4: [ABORT^[[36;21H] Reduce debugger level (to debug level 1).^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H5:^[[36;23HExit debugger, returning to top level.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H("unde^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l(B[0;7m>[36;1H(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; compilation unit finished^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   Undefined variables:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     ’ALL ’IS ’X ’Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   caught 4 WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   caught 2 STYLE-WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HSPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H* (defun speak (x) (y) (list ’all x ’is y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (LIST ’ALL X ’IS Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught STYLE-WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined function: COMMON-LISP-USER::Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (LIST ’ALL X ’IS Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’ALL^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d^[[2S^[[1;39r^[[35;1H;^[[36d^H; compilation u(B[0;7m>[36;1H(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   Undefined function:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   Undefined variables:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     Y ’ALL ’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   caught 3 WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   caught 1 STYLE-WARNING condition^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HWARNING: redefining COMMON-LISP-USER::SPEAK in DEFUN^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HSPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H* (defun speak ((x) (y)) (list all ’x is ’y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (SB-INT:NAMED-LAMBDA SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^[[36;11H((X) (Y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^[[9G(BLOCK SPEAK (LIST ALL ’X IS ’Y)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught ERROR:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   Required argument is not a symbol: (X)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1Hdebugger invoked on a SB-INT:SIMPLE-PROGRAM-ERROR in thread^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[36m#<THREAD "main thread" RUNNING {1000560083}>:^M^[[39m^[(B^[[m^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3HRequired argument is not a symbol: (X)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1HType HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d[4S[1;39r[33;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[34d^[[1;39r^[[36;1Hrestarts (invokable by number or by possibly-abbreviated name):^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[35d^[[1;39r^[[36;3H0: [ABORT] Exit debugger, returning to top level.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[36d^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H((FLET "LAMBDA0" :IN "SYS:SRC;COMPILER;TARGET-MAIN.LISP"))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0] (list 'cons t nil)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d[2S[1;39r[35;1H^[[1;39r^[[36;1H(CONS T NIL)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[36d^[[1;39r^[[36;1H0] (eval (list 'cons t nil))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H(T)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0] (eval (eval (list 'cons t nil)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1Hdebugger invoked on a UNDEFINED-FUNCTION in thread^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[36m#<THREAD "main thread" RUNNING {1000560083}>:^M^[[39m^[(B^[[m^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3HThe function COMMON-LISP:T is undefined.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d^[[2S^[[1;39r^[[35;1HType HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.^M^[[36(B[0;7m>[36;1H(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1Hrestarts (invokable by number or by possibly-abbreviated name):^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H0: [CONTINUE^[[21G] Retry calling T.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H1: [USE-VALUE     ] Call specified function.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H2: [RETURN-VALUE  ] Return specified values.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H3: [RETURN-NOTHING] Return zero values.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H4: [ABORT^[[36;21H] Reduce debugger level (to debug level 1).^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H5:^[[36;23HExit debugger, returning to top level.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H("unde^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l(B[0;7m>[36;1H(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l7[2;37r8M[1;39r[2;1H^[[1;39r^[[36;1H;   Required argument is not a symbol: (X)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught ERROR:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^[[9G(BLOCK SPEAK (LIST ALL ’X IS ’Y)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^[[36;11H((X) (Y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     (SB-INT:NAMED-LAMBDA SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H* (defun speak ((x) (y)) (list all ’x is ’y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HSPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HWARNING: redefining COMMON-LISP-USER::SPEAK in DEFUN^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   caught 1 STYLE-WARNING condition^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   caught 3 WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     Y ’ALL ’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   Undefined variables:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   Undefined function:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d^[[2S^[[1;39r^[[35;1H;^[[36d^H; compilation u(B[0;7m>[2;1H(B[m[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’ALL^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     (LIST ’ALL X ’IS Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l[3d[?12l[?25h[?25l[4d[?12l[?25h[?25l[5d[?12l[?25h[?25l[6d[?12l[?25h[?25l[7d[?12l[?25h[?25l[8d[?12l[?25h[?25l[9d[?12l[?25h[?25l[10d[?12l[?25h[?25l[11d[?12l[?25h[?25l[12d[?12l[?25h[?25l[13d[?12l[?25h[?25l[14d[?12l[?25h[?25l[15d[?12l[?25h[?25l[16d[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[20d[?12l[?25h[?25l[21d[?12l[?25h[?25l[22d[?12l[?25h[?25l[23d[?12l[?25h[?25l[24d[?12l[?25h[?25l[25d[?12l[?25h[?25l[26d[?12l[?25h[?25l[27d[?12l[?25h[?25l[28d[?12l[?25h[?25l[29d[?12l[?25h[?25l[30d[?12l[?25h[?25l[31d[?12l[?25h[?25l[32d[?12l[?25h[?25l[33d[?12l[?25h[?25l[34d[?12l[?25h[?25l[35d[?12l[?25h[?25l[36d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0] (list 'cons t nil)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H(CONS T NIL)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0] (eval (list 'cons t nil))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H(T)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H0] (eval (eval (list 'cons t nil)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1Hdebugger invoked on a UNDEFINED-FUNCTION in thread^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[36m#<THREAD "main thread" RUNNING {1000560083}>:^M^[[39m^[(B^[[m^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3HThe function COMMON-LISP:T is undefined.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d^[[2S^[[1;39r^[[35;1HType HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.^M^[[36(B[0;7m>[36;1H(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1Hrestarts (invokable by number or by possibly-abbreviated name):^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H0: [CONTINUE^[[21G] Retry calling T.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H1: [USE-VALUE     ] Call specified function.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H2: [RETURN-VALUE  ] Return specified values.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H3: [RETURN-NOTHING] Return zero values.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H4: [ABORT^[[36;21H] Reduce debugger level (to debug level 1).^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;3H5:^[[36;23HExit debugger, returning to top level.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H("unde^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l(B[0;7m>[36;1H(B[m[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l7[2;37r8M[1;39r[2;1H^[[1;39r^[[36;1H;   Required argument is not a symbol: (X)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught ERROR:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^[[9G(BLOCK SPEAK (LIST ALL ’X IS ’Y)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^[[36;11H((X) (Y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     (SB-INT:NAMED-LAMBDA SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H* (defun speak ((x) (y)) (list all ’x is ’y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HSPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HWARNING: redefining COMMON-LISP-USER::SPEAK in DEFUN^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   caught 1 STYLE-WARNING condition^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   caught 3 WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     Y ’ALL ’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   Undefined variables:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l[3d[?12l[?25h[?25l[4d[?12l[?25h[?25l[5d[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   Undefined function:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d^[[2S^[[1;39r^[[35;1H;^[[36d^H; compilation u(B[0;7m>[2;1H(B[m[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’ALL^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     (LIST ’ALL X ’IS Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined function: COMMON-LISP-USER::Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught STYLE-WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     (Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     (LIST ’ALL X ’IS Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l[3d[?12l[?25h[?25l[4d[?12l[?25h[?25l[5d[?12l[?25h[?25l[6d[?12l[?25h[?25l[7d[?12l[?25h[?25l[8d[?12l[?25h[?25l[9d[?12l[?25h[?25l[10d[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H* (defun speak (x) (y) (list ’all x ’is y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HSPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   caught 2 STYLE-WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   caught 4 WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     ’ALL ’IS ’X ’Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   Undefined variables:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; compilation unit finished^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l^[[?25h^[[?25l^[[?12l(B[0;7m>[2;1H(B[m[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H("unde^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8[2T[1;39r[2;1H^[[1;39r^[[36;3H5:^[[36;23HExit debugger, returning to top level.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[3d^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[A[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3H4: [ABORT^[[36;21H] Reduce debugger level (to debug level 1).^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3H3: [RETURN-NOTHING] Return zero values.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l[3d[?12l[?25h[?25l[4d[?12l[?25h[?25l[5d[?12l[?25h[?25l[6d[?12l[?25h[?25l[7d[?12l[?25h[?25l[8d[?12l[?25h[?25l[9d[?12l[?25h[?25l[10d[?12l[?25h[?25l[11d[?12l[?25h[?25l[12d[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3H2: [RETURN-VALUE  ] Return specified values.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3H1: [USE-VALUE     ] Call specified function.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3H0: [CONTINUE^[[21G] Retry calling T.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1Hrestarts (invokable by number or by possibly-abbreviated name):^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d^[[2S^[[1;39r^[[35;1HType HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.^M^[[36(B[0;7m>[2;1H(B[m[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3HThe function COMMON-LISP:T is undefined.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[36m#<THREAD "main thread" RUNNING {1000560083}>:^M^[[39m^[(B^[[m^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1Hdebugger invoked on a UNDEFINED-FUNCTION in thread^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H0] (eval (eval (list 'cons t nil)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H(T)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H0] (eval (list 'cons t nil))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H(CONS T NIL)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8[2T[1;39r[2;1H^[[1;39r^[[36;1H0] (list 'cons t nil)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[3d^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[A[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H((FLET "LAMBDA0" :IN "SYS:SRC;COMPILER;TARGET-MAIN.LISP"))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3H0: [ABORT] Exit debugger, returning to top level.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1Hrestarts (invokable by number or by possibly-abbreviated name):^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8[2T[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[3d^[[1;39r^[[36;1HType HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[A[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3HRequired argument is not a symbol: (X)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[36m#<THREAD "main thread" RUNNING {1000560083}>:^M^[[39m^[(B^[[m^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1Hdebugger invoked on a SB-INT:SIMPLE-PROGRAM-ERROR in thread^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   Required argument is not a symbol: (X)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught ERROR:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^[[9G(BLOCK SPEAK (LIST ALL ’X IS ’Y)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^[[36;11H((X) (Y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     (SB-INT:NAMED-LAMBDA SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H* (defun speak ((x) (y)) (list all ’x is ’y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HSPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HWARNING: redefining COMMON-LISP-USER::SPEAK in DEFUN^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   caught 1 STYLE-WARNING condition^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   caught 3 WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     Y ’ALL ’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   Undefined variables:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   Undefined function:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d^[[2S^[[1;39r^[[35;1H;^[[36d^H; compilation u(B[0;7m>[2;1H(B[m[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’ALL^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     (LIST ’ALL X ’IS Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined function: COMMON-LISP-USER::Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught STYLE-WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     (Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     (LIST ’ALL X ’IS Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H* (defun speak (x) (y) (list ’all x ’is y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HSPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   caught 2 STYLE-WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   caught 4 WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     ’ALL ’IS ’X ’Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   Undefined variables:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; compilation unit finished^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’X^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’ALL^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     (LIST ’ALL ’X ’IS ’Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   The variable Y is defined but never used.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught STYLE-WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   The variable X is defined but never used.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught STYLE-WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^[[9G(BLOCK SPEAK (LIST ’ALL ’X ’IS ’Y)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^[[36;11H(X Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     (SB-INT:NAMED-LAMBDA SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H* (defun speak (x y) (list ’all ’x ’is ’y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1Hdistribution for more information.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HBSD-style licenses.  See the CREDITS and COPYING files in the^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HIt is mostly in the public domain; some portions are provided under^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HMore information about SBCL is available at <http://www.sbcl.org/>.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d^[[2S^[[1;39r^[[36;1HSB(B[0;7m>[2;1H(B[m[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HThis is SBCL 2.0.1.debian, an implementation of ANSI Common Lisp.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[0;32m@Artyom2222 ^[[0m➜ ^[[1;34m/workspaces/csci-330-homeworks-Artyom2222/Homework1 ^[[0;36m(^[[1;31mmain^[[0;36m) ^[[0m$ sbcl^M^[(B[0;7m>[2;1H(B[m[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HScript started, file is Q1^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[0;32m@Artyom2222 ^[[0m➜ ^[[1;34m/workspaces/csci-330-homeworks-Artyom2222/Homework1 ^[[0;36m(^[[1;31mmain^[[0;36m) ^[[0m$ script q(B[0;7m>[2;1H(B[m[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H0[2] (exit)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H(SECOND FIRST)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H0[2] (mystery (list 'first 'second))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H(NIL ZOWIE)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H0[2] (mystery 'dancing 'bear)^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^H^H ^(B[0;7m>[2;1H(B[m[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;4Hsource: (DEFUN MYSTERY (X) (LIST (SECOND X) (FIRST X)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H(MYSTERY DANCING BEAR) [external]^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3H3:^[[36;25HExit debugger, returning to top level.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3H2: [ABORT^[[36;23H] Reduce debugger level (to debug level 1).^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3H1: [CALL-FORM^[[23G] Call a different form^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3H0: [REPLACE-FUNCTION] Call a different function with the same arguments^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^(B[0;7m>[2;1H(B[m[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   caught 1 fatal ERROR condition^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; compilation unit aborted^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H0[2] (exit)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HNIL^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H0[2] (eval (list 'eval nil))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H(EVAL NIL)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H0[2] (list 'eval nil)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HNIL^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H0[2] (eval nil)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H(T)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H0[2] (apply #'cons '(t nil))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H("undefined function")^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3H5:^[[36;23HExit debugger, returning to top level.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3H4: [ABORT^[[36;21H] Reduce debugger level (to debug level 1).^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3H3: [RETURN-NOTHING] Return zero values.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3H2: [RETURN-VALUE  ] Return specified values.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3H1: [USE-VALUE     ] Call specified function.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3H0: [CONTINUE^[[21G] Retry calling T.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l[3d[?12l[?25h[?25l[4d[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1Hrestarts (invokable by number or by possibly-abbreviated name):^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HType HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3HThe function COMMON-LISP:T is undefined.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[36m#<THREAD "main thread" RUNNING {1000560083}>:^M^[[39m^[(B^[[m^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1Hdebugger invoked on a UNDEFINED-FUNCTION in thread^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H0] (eval (eval (list 'cons t nil)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H(T)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H0] (eval (list 'cons t nil))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H(CONS T NIL)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H0] (list 'cons t nil)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H((FLET "LAMBDA0" :IN "SYS:SRC;COMPILER;TARGET-MAIN.LISP"))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3H0: [ABORT] Exit debugger, returning to top level.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1Hrestarts (invokable by number or by possibly-abbreviated name):^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HType HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;3HRequired argument is not a symbol: (X)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[36m#<THREAD "main thread" RUNNING {1000560083}>:^M^[[39m^[(B^[[m^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1Hdebugger invoked on a SB-INT:SIMPLE-PROGRAM-ERROR in thread^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   Required argument is not a symbol: (X)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught ERROR:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^[[9G(BLOCK SPEAK (LIST ALL ’X IS ’Y)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^[[36;11H((X) (Y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     (SB-INT:NAMED-LAMBDA SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H* (defun speak ((x) (y)) (list all ’x is ’y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HSPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HWARNING: redefining COMMON-LISP-USER::SPEAK in DEFUN^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8[2T[1;39r[2;1H^[[1;39r^[[36;1H;   caught 3 WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[3d^[[1;39r^[[36;1H;   caught 1 STYLE-WARNING condition^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[A[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     Y ’ALL ’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   Undefined variables:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   Undefined function:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; compilation unit finished^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’ALL^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     (LIST ’ALL X ’IS Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined function: COMMON-LISP-USER::Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught STYLE-WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     (Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     (LIST ’ALL X ’IS Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H* (defun speak (x) (y) (list ’all x ’is y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1HSPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   caught 2 STYLE-WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   caught 4 WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;     ’ALL ’IS ’X ’Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H;   Undefined variables:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[1;39r^[[36;1H; compilation unit finished^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[?2004h^[[?1049h^[[22;0;0t^[[1;39r^[(B^[[m^[[4l^[[?7h^[[39;49m^[[?1h^[=^[[?1h^[=^[[?25l^[[39;49m^[(B^[[m^[[H^[[2J^[[37;69H^[(B^[[0;7m[ Reading... ](B[0;7m>[2;1H(B[m[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H^[[0;32m@Artyom2222 ^[[0m➜ ^[[1;34m/workspaces/csci-330-homeworks-Artyom2222/Homework1 ^[[0;36m(^[[1;31mmain^[[0;36m) ^[[0m$ nano Q1[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H;   caught 1 ERROR condition[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H;   caught 1 fatal ERROR condition[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H; compilation unit aborted[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H;[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H0[2] (exit)[?12l[?25h[?25l7[2;36r8M[1;39r[2;1HNIL[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H0[2] (eval (list 'eval nil))[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H(EVAL NIL)[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H0[2] (list 'eval nil)[?12l[?25h[?25l7[2;36r8M[1;39r[2;1HNIL[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H0[2] (eval nil)[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H(T)[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H0[2] (apply #'cons '(t nil))[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H("undefined function")[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H[?12l[?25h[?25l7[2;36r8M[1;39r[2;3H5:[2;23HExit debugger, returning to top level.[?12l[?25h[?25l7[2;36r8M[1;39r[2;3H4: [ABORT[2;21H] Reduce debugger level (to debug level 1).[?12l[?25h[?25l7[2;36r8M[1;39r[2;3H3: [RETURN-NOTHING] Return zero values.[?12l[?25h[?25l7[2;36r8M[1;39r[2;3H2: [RETURN-VALUE  ] Return specified values.[?12l[?25h[?25l7[2;36r8M[1;39r[2;3H1: [USE-VALUE     ] Call specified function.[?12l[?25h[?25l[3d[?12l[?25h[?25l[4d[?12l[?25h[?25l[5d[?12l[?25h[?25l[6d[?12l[?25h[?25l[7d[?12l[?25h[?25l[8d[?12l[?25h[?25l[9d[?12l[?25h[?25l[10d[?12l[?25h[?25l[11d[?12l[?25h[?25l[12d[?12l[?25h[?25l[13d[?12l[?25h[?25l[14d[?12l[?25h[?25l[15d[?12l[?25h[?25l[16d[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[20d[?12l[?25h[?25l[21d[?12l[?25h[?25l[22d[?12l[?25h[?25l[23d[?12l[?25h[?25l[24d[?12l[?25h[?25l[25d[?12l[?25h[?25l[26d[?12l[?25h[?25l[27d[?12l[?25h[?25l[28d[?12l[?25h[?25l[29d[?12l[?25h[?25l[30d[?12l[?25h[?25l[31d[?12l[?25h[?25l[32d[?12l[?25h[?25l[33d[?12l[?25h[?25l[34d[?12l[?25h[?25l[35d[?12l[?25h[?25l[36d[?12l[?25h[?25l7[2;37r8[37d[2S[1;39r[35;1H^[[1;39r^[[36;1H;     (LIST ’ALL X ’IS Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[36d^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[13d[?12l[?25h[?25l[14d[?12l[?25h[?25l[15d[?12l[?25h[?25l[16d[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[20d[?12l[?25h[?25l[21d[?12l[?25h[?25l[23d[?12l[?25h[?25l[26d[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[20d[?12l[?25h[?25l[21d[?12l[?25h[?25l[22d[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[16d[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[20d[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[11d[?12l[?25h[?25l[12d[?12l[?25h[?25l[13d[?12l[?25h[?25l[14d[?12l[?25h[?25l[15d[?12l[?25h[?25l[16d[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[20d[?12l[?25h[?25l[21d[?12l[?25h[?25l[22d[?12l[?25h[?25l[23d[?12l[?25h[?25l[24d[?12l[?25h[?25l[25d[?12l[?25h[?25l[26d[?12l[?25h[?25l[27d[?12l[?25h[?25l[28d[?12l[?25h[?25l[29d[?12l[?25h[?25l[30d[?12l[?25h[?25l[31d[?12l[?25h[?25l[32d[?12l[?25h[?25l[33d[?12l[?25h[?25l[34d[?12l[?25h[?25l[35d[?12l[?25h[?25l[36d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught STYLE-WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined function: COMMON-LISP-USER::Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (LIST ’ALL X ’IS Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’ALL^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; compilation unit finished^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   Undefined function:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   Undefined variables:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     Y ’ALL ’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   caught 3 WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   caught 1 STYLE-WARNING condition^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d[2S[1;39r[35;1H^[[1;39r^[[36;1HWARNING: redefining COMMON-LISP-USER::SPEAK in DEFUN^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[36d^[[1;39r^[[36;1HSPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H* (defun speak ((x) (y)) (list all ’x is ’y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (SB-INT:NAMED-LAMBDA SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^[[36;11H((X) (Y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^[[9G(BLOCK SPEAK (LIST ALL ’X IS ’Y)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l[38d[J[39d[?12l[?25h[39;1H[?1049l[23;0;0t[?1l>[?2004l[0;32m@Artyom2222 [0m➜ [1;34m/workspaces/csci-330-homeworks-Artyom2222/Homework1 [0;36m([1;31mmain[0;36m) [0m$ nano Q1
+[?2004h[?1049h[22;0;0t[1;39r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[37;69H(B[0;7m[ Reading... ](B[m[37;67H(B[0;7m[ Read 792 lines ](B[m[H(B[0;7m  GNU nano 4.8                                                              Q1                                                                        [1;149H(B[m[38d(B[0;7m^G(B[m Get Help     (B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut Text     (B[0;7m^J(B[m Justify[81G(B[0;7m^C(Bent frame: using EVAL instead of EVAL-IN-FRAME.[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H0[2] (eval nil)[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H(T)[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H; No debug variables for current frame: using EVAL instead of EVAL-IN-FRAME.[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H0[2] (apply #'cons '(t nil))[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H("undefined function")[?12l[?25h[?25l7[2;36r8M[1;39r[2;1H[?12l[?25h[?25l7[2;36r8M[1;39r[2;3H5:[2;23HExit debugger, returning to top level.[?12l[?25h[?25l7[2;36r8M[1;39r[2;3H4: [ABORT[2;21H] Reduce debugger level (to debug level 1).[?12l[?25h[?25l7[2;36r8M[1;39r[2;3H3: [RETURN-NOTHING] Return zero values.[?12l[?25h[?25l7[2;36r8M[1;39r[2;3H2: [RETURN-VALUE  ] Return specified values.[?12l[?25h[?25l7[2;36r8M[1;39r[2;3H1: [USE-VALUE     ] Call specified function.[?12l[?25h[?25l[3d[?12l[?25h[?25l[4d[?12l[?25h[?25l[5d[?12l[?25h[?25l[6d[?12l[?25h[?25l[7d[?12l[?25h[?25l[8d[?12l[?25h[?25l[9d[?12l[?25h[?25l[10d[?12l[?25h[?25l[11d[?12l[?25h[?25l[12d[?12l[?25h[?25l[13d[?12l[?25h[?25l[14d[?12l[?25h[?25l[15d[?12l[?25h[?25l[16d[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[20d[?12l[?25h[?25l[21d[?12l[?25h[?25l[22d[?12l[?25h[?25l[23d[?12l[?25h[?25l[24d[?12l[?25h[?25l[25d[?12l[?25h[?25l[26d[?12l[?25h[?25l[27d[?12l[?25h[?25l[28d[?12l[?25h[?25l[29d[?12l[?25h[?25l[30d[?12l[?25h[?25l[31d[?12l[?25h[?25l[32d[?12l[?25h[?25l[33d[?12l[?25h[?25l[34d[?12l[?25h[?25l[35d[?12l[?25h[?25l[36d[?12l[?25h[?25l7[2;37r8[37d[2S[1;39r[35;1H^[[1;39r^[[36;1H;     (LIST ’ALL X ’IS Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[36d^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[13d[?12l[?25h[?25l[14d[?12l[?25h[?25l[15d[?12l[?25h[?25l[16d[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[20d[?12l[?25h[?25l[21d[?12l[?25h[?25l[23d[?12l[?25h[?25l[26d[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[20d[?12l[?25h[?25l[21d[?12l[?25h[?25l[22d[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[16d[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[20d[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[A[?12l[?25h[?25l[11d[?12l[?25h[?25l[12d[?12l[?25h[?25l[13d[?12l[?25h[?25l[14d[?12l[?25h[?25l[15d[?12l[?25h[?25l[16d[?12l[?25h[?25l[17d[?12l[?25h[?25l[18d[?12l[?25h[?25l[19d[?12l[?25h[?25l[20d[?12l[?25h[?25l[21d[?12l[?25h[?25l[22d[?12l[?25h[?25l[23d[?12l[?25h[?25l[24d[?12l[?25h[?25l[25d[?12l[?25h[?25l[26d[?12l[?25h[?25l[27d[?12l[?25h[?25l[28d[?12l[?25h[?25l[29d[?12l[?25h[?25l[30d[?12l[?25h[?25l[31d[?12l[?25h[?25l[32d[?12l[?25h[?25l[33d[?12l[?25h[?25l[34d[?12l[?25h[?25l[35d[?12l[?25h[?25l[36d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught STYLE-WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined function: COMMON-LISP-USER::Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (LIST ’ALL X ’IS Y)^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’ALL^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; caught WARNING:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   undefined variable: COMMON-LISP-USER::’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^H^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; compilation unit finished^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   Undefined function:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     Y^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   Undefined variables:^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     Y ’ALL ’IS^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   caught 3 WARNING conditions^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;   caught 1 STYLE-WARNING condition^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d[2S[1;39r[35;1H^[[1;39r^[[36;1HWARNING: redefining COMMON-LISP-USER::SPEAK in DEFUN^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[36d^[[1;39r^[[36;1HSPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H* (defun speak ((x) (y)) (list all ’x is ’y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H; in: DEFUN SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;     (SB-INT:NAMED-LAMBDA SPEAK^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^[[36;11H((X) (Y))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l7[2;37r8[37d
+[1;39r[36;1H^[[1;39r^[[36;1H;^[[9G(BLOCK SPEAK (LIST ALL ’X IS ’Y)))^M^[[?12l^[[?25h^[[?25l^[7^[[2;37r^[8^[[37d[?12l[?25h[?25l[38d[J[39d[?12l[?25h[39;1H[?1049l[23;0;0t[?1l>[?2004l[0;32m@Artyom2222 [0m➜ [1;34m/wo
