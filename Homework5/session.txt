@@ -1,0 +1,30 @@
+@Artyom2222 ➜ /workspaces/csci-330-homeworks-Artyom2222 (main) $ script session.txt
+Script started, file is session.txt
+@Artyom2222 ➜ /workspaces/csci-330-homeworks-Artyom2222 (main) $ sbcl
+This is SBCL 2.0.1.debian, an implementation of ANSI Common Lisp.
+More information about SBCL is available at <http://www.sbcl.org/>.
+
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+* 
+
+(load "parser.lisp")
+ixoyowdssbes is valid.
+ixoys is valid.
+iydsbs is valid.
+izdssb is valid.
+iwdsbs is valid.
+ixoyowdssb is valid.
+ixoyowdssbes is valid.
+ixoyowdssbe is invalid.
+ixoyowdssbex is invalid.
+ixoyowdssbse is valid.
+ixoyowdssbeb is invalid.
+ixoyowdssbess is valid.
+ixoyowdssbeds is invalid.
+ixoyowdssbese is valid.
+T
+*  
+exit
